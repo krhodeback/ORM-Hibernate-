@@ -2,6 +2,8 @@ package hiber.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -9,8 +11,10 @@ import javax.persistence.Table;
 @Table(name = "cars")
 public class Car {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     @Column(name = "series")
-    private Long series;
+    private int series;
 
     @Column(name = "model")
     private String model;
@@ -18,23 +22,31 @@ public class Car {
     public Car() {
     }
 
-    public Car(String model, Long series) {
+    public Car(String model, int series) {
         super();
         this.model = model;
         this.series = series;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getModel() {
         return model;
     }
 
-    public Long getSeries() {
+    public int getSeries() {
         return series;
     }
 
     @Override
     public String toString() {
-        return "Car [series=" + series + ", model=" + model + "]";
+        return "Car [id=" + id + ", series=" + series + ", model=" + model + "]";
     }
 
 }

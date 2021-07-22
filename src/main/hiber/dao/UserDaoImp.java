@@ -34,7 +34,9 @@ public class UserDaoImp implements UserDao {
 
     public User getUserByCar(Car car) {
         Query query = null;
-        query = sessionFactory.openSession().createQuery("from User WHERE car_series = :series");
+        query = sessionFactory.openSession()
+                .createQuery("from User user LEFT OUTER JOIN FETCH user.car WHERE model =:model AND series = :series");
+        query.setParameter("model", car.getModel());
         query.setParameter("series", car.getSeries());
         return (User) query.getSingleResult();
 
