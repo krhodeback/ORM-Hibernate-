@@ -14,6 +14,7 @@ import java.util.List;
 @Component
 public class UserServiceImp implements UserService {
 
+
     @Autowired
     private UserDao userDao;
 
@@ -33,7 +34,6 @@ public class UserServiceImp implements UserService {
     public User getUserByCar(Car car) {
         return userDao.getUserByCar(car);
     }
-    
-    
+
 
 }

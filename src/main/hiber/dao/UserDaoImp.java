@@ -16,6 +16,7 @@ import java.util.List;
 @Component
 public class UserDaoImp implements UserDao {
 
+
     @Autowired
     @Qualifier("sessionFactory")
     private SessionFactory sessionFactory;
